@@ -1,0 +1,62 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
+import {
+  createContext,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
+import { api } from "../services/api";
+
+interface Transactions {
+  id: number;
+  title: string;
+  type: string;
+  category: string;
+  amount: number;
+  createdAt: string;
+}
+
+type TransactionInput = Omit<Transactions, "id" | "createdAt">;
+
+interface TransactionsProviderProps {
+  children: ReactNode;
+}
+
+interface TransactionContextData {
+  transactions: Transactions[];
+  createTransaction: (transaction: TransactionInput) => void;
+}
+
+export const TransactionContext = createContext<TransactionContextData>(
+  {} as TransactionContextData
+);
+
+export function TransactionProvider({ children }: TransactionsProviderProps) {
+  const [transactions, setTransactions] = useState<Transactions[]>([]);
+
+  useEffect(() => {
+    api
+      .get("transactions")
+      .then(
+        (response: {
+          data: { transactions: SetStateAction<Transactions[]> };
+        }) => setTransactions(response.data.transactions)
+      );
+  }, []);
+
+  async function createTransaction(transactionInput: TransactionInput) {
+    const response = await api.post("/transactions", {
+      ...transactionInput,
+      createdAt: new Date(),
+    });
+    const { transaction } = response.data;
+    setTransactions([...transactions, transaction]);
+  }
+
+  return (
+    <TransactionContext.Provider value={{ transactions, createTransaction }}>
+      {children}
+    </TransactionContext.Provider>
+  );
+}

@@ -2,15 +2,21 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-top: -7rem;
-  @media (min-width: 801px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
   @media (max-width: 800px) {
     grid-template-rows: 1fr;
+    overflow-x: scroll;
+    div {
+      strong {
+        white-space: nowrap;
+      }
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
-
   div {
     padding: 1.5rem 2rem;
     color: var(--text-title);
