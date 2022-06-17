@@ -1,3 +1,4 @@
+import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
   return (
     <div className="App">
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
+      <Dashboard />
     </div>
   );
 }

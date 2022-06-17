@@ -11,6 +11,17 @@ export const Content = styled.div`
   margin: 0 auto;
   padding: 2rem 1rem 8rem;
   max-width: 1120px;
+
+  div {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    h1 {
+      margin-left: -8rem;
+      color: #efefef;
+    }
+  }
+
   button {
     padding: 0 2rem;
     height: 3rem;
