@@ -1,7 +1,12 @@
+import { Header } from "./components/Header";
+
 function App() {
+  function handleOpenNewTransactionModal() {
+    console.log("hello Toggle");
+  }
   return (
     <div className="App">
-      <h1>Hello World!</h1>
+      <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
     </div>
   );
 }

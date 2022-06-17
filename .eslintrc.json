@@ -16,6 +16,9 @@
       "prettier"
     ],
     "rules": {
+      "import/no-named-default": "off",
+      "no-console": "off",
+      "react/jsx-no-bind": "off",
       "import/extensions": "off",
       "import/prefer-default-export": "off",
       "react/react-in-jsx-scope": "off",
