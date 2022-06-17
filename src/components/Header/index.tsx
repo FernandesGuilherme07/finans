@@ -1,7 +1,7 @@
 import { Container, Content } from "./styles";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { default as logoImg } from "../../assets/logo.svg";
+import logoImg from "../../assets/logo.svg";
 
 interface HeaderProps {
   onOpenNewTransactionModal: () => void;
