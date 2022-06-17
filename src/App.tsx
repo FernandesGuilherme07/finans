@@ -1,16 +1,39 @@
+import { useState } from "react";
+import Modal from "react-modal";
+
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
 
-function App() {
+import { GlobalStyle } from "./styles/global";
+
+Modal.setAppElement("#root");
+
+export function App() {
+  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
+    useState(false);
+
   function handleOpenNewTransactionModal() {
-    console.log("hello Toggle");
+    setIsNewTransactionModalOpen(true);
   }
+
+  function handleCloseNewTransactionModal() {
+    setIsNewTransactionModalOpen(false);
+  }
+
   return (
-    <div className="App">
+    <>
+      <GlobalStyle />
+
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
+
       <Dashboard />
-    </div>
+
+      <Modal
+        isOpen={isNewTransactionModalOpen}
+        onRequestClose={handleCloseNewTransactionModal}
+      >
+        <h2>Cadastrar Transação</h2>
+      </Modal>
+    </>
   );
 }
-
-export default App;
