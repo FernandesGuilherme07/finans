@@ -80,7 +80,8 @@ export const GlobalStyle = createGlobalStyle`
       left: 0;
       right: 0;
       bottom: 0;
-      border-radius: 2rem 2rem 0 0;
+      border-radius: 1rem 1rem 0 0;
+      padding-bottom: 0.5rem;
     }
   }
 
