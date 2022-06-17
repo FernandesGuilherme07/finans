@@ -1,17 +1,17 @@
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useState } from "react";
 import Modal from "react-modal";
-
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-
 // @ts-ignore
 import closeImg from "../../assets/close.svg";
 // @ts-ignore
 import incomeImg from "../../assets/income.svg";
 // @ts-ignore
 import outcomeImg from "../../assets/outcome.svg";
-import { TransactionContext } from "../../contexts/TrasitionContext";
+import { useTransactions } from "../../hooks/useTransactions";
 
 import { Container, TransactionTypeContainer, RadioBox } from "./styles";
+
+Modal.setAppElement("#root");
 
 interface NewTransactionModalProps {
   isOpen: boolean;
@@ -22,16 +22,26 @@ export function NewTransactionModal({
   isOpen,
   onRequestClose,
 }: NewTransactionModalProps) {
-  const { createTransaction } = useContext(TransactionContext);
+  const { createTransaction } = useTransactions();
 
-  const [type, setType] = useState("deposit");
   const [title, setTitle] = useState("");
-  const [amount, setAmout] = useState(0);
+  const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState("");
+  const [type, setType] = useState("deposit");
 
-  function handleCreateNewTransaction(event: FormEvent) {
+  async function handleCreateNewTransaction(event: FormEvent) {
     event.preventDefault();
-    createTransaction({ type, title, amount, category });
+    await createTransaction({
+      title,
+      amount,
+      category,
+      type,
+    });
+    setTitle("");
+    setAmount(0);
+    setCategory("");
+    setType("deposit");
+    onRequestClose();
   }
 
   return (
@@ -63,7 +73,7 @@ export function NewTransactionModal({
           type="number"
           placeholder="Valor"
           value={amount}
-          onChange={({ target }) => setAmout(Number(target.value))}
+          onChange={({ target }) => setAmount(Number(target.value))}
         />
 
         <TransactionTypeContainer>

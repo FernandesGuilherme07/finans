@@ -75,6 +75,18 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 576px;
     background: var(--background);
     border-radius: 0.25rem;
+
+    animation-name: grow-modal;
+    animation-duration: .4s;
+    animation-timing-function: ease-in-out;
+    @keyframes grow-modal {
+      0% { opacity: .2; }
+      25% { opacity: .4; }
+      50% { opacity: .6; }
+      75% { opacity: .8; }
+      100% { opacity: .9; }
+    }
+
     @media (max-width: 600px) {
       position: absolute;
       left: 0;
