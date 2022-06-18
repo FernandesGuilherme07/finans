@@ -1,33 +1,50 @@
-Finans
- GitHub language count GitHub Top Language License
-
-Finans
-
-Tópicos
-Sobre o Finans
-
-Tecnologias
-
-Instalação e uso
-
-Licença
 
 
-Sobre o Finans
-O Finans é uma alternativa simples e eficaz para gerenciar suas finanças, permitindo o cadastro de entradas, saídas e a organização das mesmas em categorias.
+# Finans
+
+## Tópicos
+
+- Sobre o Finans
+
+- Tecnologias
+
+- Instalação e uso
+
+- Licença
 
 
-Página inicial
 
-Tecnologias
-Tecnologias e ferramentas utilizadas no desenvolvimento do projeto:
+## Sobre o Finans
+- O Finans é uma alternativa simples e eficaz para gerenciar suas finanças, permitindo o cadastro de entradas, saídas e a organização das mesmas em categorias.
 
-React
-TypeScript
-Styled Components
-MirageJS
-Axios
-Polished
+
+## Desktop
+
+
+
+<img src="./public/home-page-descktop.png"> <img src="./public/modal-descktop.png">
+
+
+## Mobile
+
+
+<img src="./public/home-page-mobile.png">    -----------              <img src="./public/modal-mobile.png">
+
+
+## Tecnologias e ferramentas utilizadas no desenvolvimento do projeto:
+
+- React
+
+- TypeScript
+
+- Styled Components
+
+- MirageJS
+
+- Axios
+
+- Polished
+
 
 Instalação e uso
 # Abra um terminal e copie este repositório com o comando
@@ -49,4 +66,3 @@ Esse projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes
 
 Feito com 🧡 by Guilherme Fernandes
 
-Linkedin Badge Gmail Badge
