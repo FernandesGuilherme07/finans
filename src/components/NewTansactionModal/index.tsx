@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import Modal from "react-modal";
+import CurrencyInput from "react-currency-input-field";
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 import closeImg from "../../assets/close.svg";
@@ -25,7 +26,7 @@ export function NewTransactionModal({
   const { createTransaction } = useTransactions();
 
   const [title, setTitle] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
   const [type, setType] = useState("deposit");
 
@@ -33,12 +34,12 @@ export function NewTransactionModal({
     event.preventDefault();
     await createTransaction({
       title,
-      amount,
+      amount: Number(amount),
       category,
       type,
     });
     setTitle("");
-    setAmount(0);
+    setAmount("");
     setCategory("");
     setType("deposit");
     onRequestClose();
@@ -61,19 +62,23 @@ export function NewTransactionModal({
 
       <Container onSubmit={handleCreateNewTransaction}>
         <h2>Cadastrar Transação</h2>
-
         <input
-          type="text"
+          required
+          className="amount"
           placeholder="Título"
           value={title}
           onChange={({ target }) => setTitle(target.value)}
         />
 
-        <input
-          type="number"
+        <CurrencyInput
+          required
+          groupSeparator="."
+          prefix="$"
           placeholder="Valor"
-          value={amount}
-          onChange={({ target }) => setAmount(Number(target.value))}
+          defaultValue={amount}
+          decimalsLimit={2}
+          // @ts-ignore
+          onValueChange={(value) => setAmount(value)}
         />
 
         <TransactionTypeContainer>
@@ -99,6 +104,7 @@ export function NewTransactionModal({
         </TransactionTypeContainer>
 
         <input
+          required
           type="text"
           placeholder="Categoria"
           value={category}

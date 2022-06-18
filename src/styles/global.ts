@@ -68,33 +68,25 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .react-modal-content {
-    border: none;
-    position: relative;
-    padding: 3rem;
-    width: 100%;
-    max-width: 576px;
     background: var(--background);
-    border-radius: 0.25rem;
+      border: none;
+      position: relative;
+      padding: 3rem;
+      width: 100%;
+      max-width: 576px;
+      border-radius: 0.25rem;
 
-    animation-name: grow-modal;
-    animation-duration: .4s;
-    animation-timing-function: ease-in-out;
-    @keyframes grow-modal {
-      0% { opacity: .2; }
-      25% { opacity: .4; }
-      50% { opacity: .6; }
-      75% { opacity: .8; }
-      100% { opacity: .9; }
-    }
 
-    @media (max-width: 600px) {
-      position: absolute;
+      @media (max-width: 700px) {
+      position: fixed;
+      max-width: 100%;
       left: 0;
       right: 0;
       bottom: 0;
       border-radius: 1rem 1rem 0 0;
-      padding-bottom: 0.5rem;
-    }
+      padding: 3rem;
+      padding-bottom: 0.8rem;
+      }
   }
 
   .react-modal-close {
