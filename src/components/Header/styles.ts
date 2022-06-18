@@ -19,6 +19,12 @@ export const Content = styled.div`
     h1 {
       margin-left: -8rem;
       color: #efefef;
+      @media (max-width: 350px) {
+        display: none;
+      }
+      @media (max-width: 699px) {
+        margin-left: -9.1rem;
+      }
     }
   }
 

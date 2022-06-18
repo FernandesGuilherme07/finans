@@ -36,6 +36,31 @@ export function TransactionsTable() {
           ))}
         </tbody>
       </table>
+      <div>
+        <h2>Transações</h2>
+        {transactions.map((transaction) => (
+          <section key={transaction.id} className="area-mobile">
+            <div>
+              <div className="title">{transaction.title}</div>
+              <div className={transaction.type}>
+                {new Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(transaction.amount)}
+              </div>
+            </div>
+
+            <div>
+              <div className="category">{transaction.category}</div>
+              <div className="date">
+                {new Intl.DateTimeFormat("pt-BR").format(
+                  new Date(transaction.createdAt)
+                )}
+              </div>
+            </div>
+          </section>
+        ))}{" "}
+      </div>
     </Container>
   );
 }

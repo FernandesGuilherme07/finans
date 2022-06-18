@@ -5,7 +5,7 @@ export const Container = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-top: -7rem;
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     grid-template-rows: 1fr;
     overflow-x: scroll;
     div {
